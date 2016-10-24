@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import com.qcm.entity.User;
+import com.qcm.entity.News;
 
 public class Test {
 
@@ -16,7 +16,13 @@ public class Test {
 		SessionFactory sessionFactory = applicationContext.getBean(
 				"sessionFactory", SessionFactory.class);
 		Session session = sessionFactory.openSession();
-		User user = session.get(User.class, 1);
-		System.out.println(user.getName());
+		News news = new News();
+		news.setText("!23");
+		news.setAbstract_("123");
+		news.setTitle("123");
+		System.out.println(session.save(news));
+		session.close();
+		System.out.println("123");
+
 	}
 }
