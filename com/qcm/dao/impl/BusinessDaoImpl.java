@@ -23,11 +23,8 @@ public class BusinessDaoImpl implements IBusinessDao {
 	private SessionFactory sessionFactory = applicationContext.getBean(
 			"sessionFactory", SessionFactory.class);
 
-	/**
-	 * 查看一个用户的所有账单
-	 * */
+
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Business> businessList(Counter counter) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
@@ -56,7 +53,6 @@ public class BusinessDaoImpl implements IBusinessDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Business> businessList(Counter counter, int start, int number) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();

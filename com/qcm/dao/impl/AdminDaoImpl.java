@@ -34,7 +34,6 @@ public class AdminDaoImpl implements IAdminDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Override
 	public boolean checkAdmin(Admin admin) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
@@ -70,8 +69,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
+
 	public List<Counter> counterList(int start, int number, int state) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
