@@ -33,7 +33,6 @@ public class AdminDaoImpl implements IAdminDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Override
 	public boolean checkAdmin(Admin admin) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();

@@ -11,7 +11,7 @@ public class Test {
 	public static void main(String[] args) {
 		System.out.println("123s");
 		ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
-				"src/main/java/springmvc-servlet.xml");
+				"src/springmvc-servlet.xml");
 		SessionFactory sessionFactory = applicationContext.getBean(
 				"sessionFactory", SessionFactory.class);
 		Session session = sessionFactory.openSession();
