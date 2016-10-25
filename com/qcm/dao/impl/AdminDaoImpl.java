@@ -57,19 +57,40 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	public static void main(String[] args) {
-		Admin admin = new Admin();
-		admin.setAdminName("qcm");
-		admin.setAdminPassword("123");
+		// Admin admin = new Admin();
+		// admin.setAdminName("qcm");
+		// admin.setAdminPassword("123");
 		IAdminDao iAdminDao = new AdminDaoImpl();
-		// 检查用户名密码是否正确
-		System.out.println(iAdminDao.checkAdmin(admin));
+		// // 检查用户名密码是否正确
+		// System.out.println(iAdminDao.checkAdmin(admin));
+		List<Counter> counters = iAdminDao.counterList(0, 1, 0);
+		for (Counter counter : counters) {
+			System.out.println(counter.getCardName());
+		}
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Counter> counterList(int start, int number, int state) {
 		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		// 1. 获得特定状态的用户
+		List<Counter> counters = session.createQuery(
+				"select distinct c from Counter c where state = " + state)
+				.list();
+
+		transaction.commit();
+		session.close();
+		return counters;
+	}
+
+	@Override
+	public boolean resetCounterPwd(Counter counter) {
+		// TODO Auto-generated method stub
+
+		return false;
 	}
 
 }

@@ -14,9 +14,16 @@ public interface IAdminDao {
 	public boolean checkAdmin(Admin admin);
 
 	/**
-	 * 搜索特定状态的用户， 从start开始的number个用户
+	 * 搜索特定状态(0是冻结，1是启用)的用户， 从start开始的number个用户
 	 * 
 	 * @author 裘丛民
 	 * */
 	public List<Counter> counterList(int start, int number, int state);
+
+	/**
+	 * 重置用户密码
+	 * 
+	 * @author 裘丛民
+	 * */
+	public boolean resetCounterPwd(Counter counter);
 }
