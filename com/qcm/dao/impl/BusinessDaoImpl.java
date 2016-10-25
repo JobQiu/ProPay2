@@ -3,15 +3,17 @@ package com.qcm.dao.impl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.qcm.dao.IBusinessDao;
 import com.qcm.entity.Business;
 
 public class BusinessDaoImpl implements IBusinessDao{
-	public void save(Business bsns) {
-		//1.获取session工厂
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	public void addTrade(Business bsns) {
+		ApplicationContext app = new FileSystemXmlApplicationContext("src/springmvc-servlet.xml");
+		SessionFactory sessionFactory = app.getBean("sessionFactory", SessionFactory.class);
+		
 		//2.开启session
 		Session session = sessionFactory.openSession();
 		//3.打开事务
@@ -24,6 +26,16 @@ public class BusinessDaoImpl implements IBusinessDao{
 		session.close();
 		//7.关闭工厂
 		session.close();
+	}
+
+	public void withdraw(Business bsns) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void transfer(Business bsns) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
