@@ -57,7 +57,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 	public static void main(String[] args) {
 		Admin admin = new Admin();
-		admin.setAdminName("");
+		admin.setAdminName("qcm");
 		admin.setAdminPassword("123");
 		IAdminDao iAdminDao = new AdminDaoImpl();
 		// 检查用户名密码是否正确

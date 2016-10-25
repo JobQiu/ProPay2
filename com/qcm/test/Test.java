@@ -16,12 +16,12 @@ public class Test {
 				"sessionFactory", SessionFactory.class);
 		Session session = sessionFactory.openSession();
 		News news = new News();
-		news.setText("!23");
-		news.setAbstract_("123");
-		news.setTitle("123");
+		news.setText("!qwe23");
+		news.setAbstract_("1wer23");
+		news.setTitle("1qwer23");
 		System.out.println(session.save(news));
 		session.close();
-		System.out.println("123");
+		System.out.println("1qwer23");
 
 	}
 }
