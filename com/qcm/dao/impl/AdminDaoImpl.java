@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import com.qcm.constant.Constant;
 import com.qcm.dao.IAdminDao;
 import com.qcm.entity.Admin;
 
@@ -19,7 +20,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 	// 这里请改成 classpath:springmvc-servlet.xm
 	private ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
-			"src/main/java/springmvc-servlet.xml");
+			Constant.XML_LOCATION);
 	// private ApplicationContext applicationContext = new
 	// FileSystemXmlApplicationContext("classpath:springmvc-servlet.xml");
 	private SessionFactory sessionFactory = applicationContext.getBean(
