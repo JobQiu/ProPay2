@@ -26,4 +26,18 @@ public interface IAdminDao {
 	 * @author 裘丛民
 	 * */
 	public boolean resetCounterPwd(Counter counter);
+
+	/**
+	 * 冻结某用户
+	 * 
+	 * @author 裘丛民
+	 * */
+	public boolean freezeCounter(Counter counter);
+
+	/**
+	 * 启用某用户
+	 * 
+	 * @author 裘丛民
+	 * */
+	public boolean warmCounter(Counter counter);
 }

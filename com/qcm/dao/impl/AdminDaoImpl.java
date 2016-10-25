@@ -12,6 +12,7 @@ import com.qcm.constant.Constant;
 import com.qcm.dao.IAdminDao;
 import com.qcm.entity.Admin;
 import com.qcm.entity.Counter;
+import com.qcm.util.PwdSecurityUtil;
 
 /**
  * @see 注意第16行的xml路径
@@ -26,13 +27,7 @@ public class AdminDaoImpl implements IAdminDao {
 	// FileSystemXmlApplicationContext("classpath:springmvc-servlet.xml");
 	private SessionFactory sessionFactory = applicationContext.getBean(
 			"sessionFactory", SessionFactory.class);
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	public boolean checkAdmin(Admin admin) {
 		// TODO Auto-generated method stub
@@ -87,7 +82,38 @@ public class AdminDaoImpl implements IAdminDao {
 	@Override
 	public boolean resetCounterPwd(Counter counter) {
 		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		// 1. 获得用户
+		List<Counter> counters = session.createQuery(
+				"select distinct c from Counter c where user_name = "
+						+ counter.getUserName()).list();
+		if (counters.size() > 0) {
+			Counter counter2 = counters.get(0);
+			counter2.setUserPassword(PwdSecurityUtil.transMd5("123456",
+					Constant.PWD_COUNT));
+			System.out.println("密码是" + counter2.getUserPassword());
+			session.update(counter2);
+			transaction.commit();
+			session.close();
+			return true;
+		} else {
+			transaction.commit();
+			session.close();
+			return false;
+		}
+	}
 
+	@Override
+	public boolean freezeCounter(Counter counter) {
+		// TODO Auto-generated method stub
+
+		return false;
+	}
+
+	@Override
+	public boolean warmCounter(Counter counter) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

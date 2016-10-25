@@ -4,4 +4,6 @@ public class Constant {
 
 	// springmvc.xml的路劲
 	public static final String XML_LOCATION = "src/springmvc-servlet.xml";
+	// 加密的次数 5 次
+	public static final int PWD_COUNT = 5;
 }
