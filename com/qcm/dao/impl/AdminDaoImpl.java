@@ -11,6 +11,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import com.qcm.constant.Constant;
 import com.qcm.dao.IAdminDao;
 import com.qcm.entity.Admin;
+import com.qcm.entity.Counter;
 
 /**
  * @see 注意第16行的xml路径
@@ -62,6 +63,11 @@ public class AdminDaoImpl implements IAdminDao {
 		// 检查用户名密码是否正确
 		System.out.println(iAdminDao.checkAdmin(admin));
 
+	}
+
+	public List<Counter> counterList(int start, int number, int state) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
