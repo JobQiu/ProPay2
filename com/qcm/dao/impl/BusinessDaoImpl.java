@@ -5,11 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import com.qcm.dao.IBusinessDao;
 import com.qcm.entity.Business;
-
+import com.qcm.entity.Counter;
+@Component
 public class BusinessDaoImpl implements IBusinessDao{
+	
 	public void addTrade(Business bsns) {
 		ApplicationContext app = new FileSystemXmlApplicationContext("src/springmvc-servlet.xml");
 		SessionFactory sessionFactory = app.getBean("sessionFactory", SessionFactory.class);
@@ -28,13 +31,11 @@ public class BusinessDaoImpl implements IBusinessDao{
 		session.close();
 	}
 
-	public void withdraw(Business bsns) {
-		// TODO Auto-generated method stub
+	public void withdraw(Counter counter) {
 		
 	}
 
-	public void transfer(Business bsns) {
-		// TODO Auto-generated method stub
+	public void transfer(Counter counter) {
 		
 	}
 
