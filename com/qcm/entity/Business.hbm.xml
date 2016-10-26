@@ -10,8 +10,11 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="counter" class="com.qcm.entity.Counter" fetch="select">
+        <many-to-one name="counterByUserCounter" class="com.qcm.entity.Counter" fetch="select">
             <column name="user_counter" not-null="true" />
+        </many-to-one>
+        <many-to-one name="counterByOtherCounter" class="com.qcm.entity.Counter" fetch="select">
+            <column name="other_counter" not-null="true" />
         </many-to-one>
         <property name="money" type="java.lang.Integer">
             <column name="money" not-null="true" />
@@ -21,9 +24,6 @@
         </property>
         <property name="time" type="java.sql.Timestamp">
             <column name="time" length="19" not-null="true" />
-        </property>
-        <property name="otherCounter" type="java.lang.Integer">
-            <column name="other_counter" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

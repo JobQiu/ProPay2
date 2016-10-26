@@ -8,8 +8,10 @@ import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import com.qcm.constant.Constant;
 import com.qcm.dao.IAdminDao;
 import com.qcm.entity.Admin;
+import com.qcm.entity.Counter;
 
 /**
  * @see 注意第16行的xml路径
@@ -18,8 +20,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 
 	// 这里请改成 classpath:springmvc-servlet.xm
-	private ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
-			"src/springmvc-servlet.xml");
+	private ApplicationContext applicationContext = new FileSystemXmlApplicationContext(Constant.XML_LOCATION);
 	// private ApplicationContext applicationContext = new
 	// FileSystemXmlApplicationContext("classpath:springmvc-servlet.xml");
 	private SessionFactory sessionFactory = applicationContext.getBean(
@@ -54,13 +55,38 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	public static void main(String[] args) {
-		Admin admin = new Admin();
-		admin.setAdminName("");
-		admin.setAdminPassword("123");
+		// Admin admin = new Admin();
+		// admin.setAdminName("qcm");
+		// admin.setAdminPassword("123");
 		IAdminDao iAdminDao = new AdminDaoImpl();
-		// 检查用户名密码是否正确
-		System.out.println(iAdminDao.checkAdmin(admin));
+		// // 检查用户名密码是否正确
+		// System.out.println(iAdminDao.checkAdmin(admin));
+		List<Counter> counters = iAdminDao.counterList(0, 1, 0);
+		for (Counter counter : counters) {
+			System.out.println(counter.getCardName());
+		}
 
+	}
+
+
+	public List<Counter> counterList(int start, int number, int state) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		// 1. 获得特定状态的用户
+		List<Counter> counters = session.createQuery(
+				"select distinct c from Counter c where state = " + state)
+				.list();
+
+		transaction.commit();
+		session.close();
+		return counters;
+	}
+
+	public boolean resetCounterPwd(Counter counter) {
+		// TODO Auto-generated method stub
+
+		return false;
 	}
 
 }
