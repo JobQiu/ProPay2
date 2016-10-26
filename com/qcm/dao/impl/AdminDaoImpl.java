@@ -21,8 +21,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 
 	// 这里请改成 classpath:springmvc-servlet.xm
-	private ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
-			Constant.XML_LOCATION);
+	private ApplicationContext applicationContext = new FileSystemXmlApplicationContext(Constant.XML_LOCATION);
 	// private ApplicationContext applicationContext = new
 	// FileSystemXmlApplicationContext("classpath:springmvc-servlet.xml");
 	private SessionFactory sessionFactory = applicationContext.getBean(
@@ -79,7 +78,6 @@ public class AdminDaoImpl implements IAdminDao {
 		return counters;
 	}
 
-	@Override
 	public boolean resetCounterPwd(Counter counter) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();

@@ -1,5 +1,6 @@
 package com.qcm.dao;
 
+
 import java.util.List;
 
 import com.qcm.entity.Business;
@@ -19,6 +20,11 @@ public interface IBusinessDao {
 	 * @author 裘丛民
 	 * */
 	public List<Business> businessList(Counter counter, int start, int number);
-
+	
+	/**添加交易记录
+	 * @author 贾国宁
+	 *
+	 */
+	void addTrade(Business bsns);
 }
 
