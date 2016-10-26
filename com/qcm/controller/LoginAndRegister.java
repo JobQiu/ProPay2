@@ -28,16 +28,16 @@ public class LoginAndRegister {
 			System.out.println(admin.getAdminName()+"==="+admin.getAdminPassword());
 			if("123".equals(admin.getAdminName())&&"123".equals(admin.getAdminPassword())){
 				
-				return "hello";
+				return "forward:/hello.jsp";
 			}else{
 				req.getSession().setAttribute("info", "用户名或密码错误!");
-				return "index";
+				return "forward:/index.jsp";
 			}
 		}
 	}
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/register")
 	public String register(@ModelAttribute Counter counter){
-		
-		return "";
+		System.out.println(counter.getUserName()+"======"+counter.getUserPassword());
+		return "forward:/index.jsp";
 	}
 }
